@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nicolás Pinilla Cortés | Ingeniero Civil</title>
+  <meta name="description" content="Ingeniero Civil especializado en supervisión técnica, interventoría y evaluación de vulnerabilidad estructural en Bogotá, Colombia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --acento: #1f4e8c;
+      --acento-oscuro: #163a69;
+      --acento-suave: #e8eff9;
+      --naranja: #e07a2f;          /* color de obra / seguridad, solo como detalle */
+      --texto: #1c2430;
+      --texto-suave: #556070;
+      --fondo: #f6f7f9;
+      --blanco: #ffffff;
+      --borde: #e3e7ed;
+      --oscuro: #121a26;
+      --radio: 12px;
+      --sombra: 0 1px 2px rgba(18,26,38,.04), 0 8px 24px rgba(18,26,38,.06);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--texto);
+      background: var(--fondo);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 { font-family: 'Manrope', 'Inter', sans-serif; line-height: 1.2; }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ===== NAVEGACIÓN ===== */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(18,26,38,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav .container {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav .marca {
+      display: flex; align-items: center; gap: .7rem;
+      color: #fff; text-decoration: none;
+    }
+    .nav .marca svg { width: 36px; height: 36px; flex-shrink: 0; }
+    .nav .marca .nombre {
+      display: flex; flex-direction: column; line-height: 1.1;
+      font-family: 'Manrope', sans-serif; font-weight: 800; font-size: .98rem; letter-spacing: .3px;
+    }
+    .nav .marca .nombre small {
+      font-family: 'Inter', sans-serif; font-weight: 600; font-size: .62rem;
+      letter-spacing: 2.2px; text-transform: uppercase; color: #9aa5b4;
+    }
+    .contacto .correo { font-size: 1.15rem; text-decoration: none; border-bottom: 2px solid var(--naranja); padding-bottom: 2px; }
+    .nav ul { display: flex; gap: 1.75rem; list-style: none; }
+    .nav ul a {
+      color: #c3ccd8; text-decoration: none; font-size: .9rem; font-weight: 500;
+      transition: color .2s;
+    }
+    .nav ul a:hover { color: #fff; }
+
+    /* ===== HERO ===== */
+    .hero {
+      background:
+        linear-gradient(135deg, rgba(18,26,38,.96) 0%, rgba(22,58,105,.92) 100%),
+        repeating-linear-gradient(0deg, transparent 0 39px, rgba(255,255,255,.04) 39px 40px),
+        repeating-linear-gradient(90deg, transparent 0 39px, rgba(255,255,255,.04) 39px 40px);
+      color: #fff;
+      padding: 6rem 0 5rem;
+    }
+    .hero .etiqueta-sup {
+      display: inline-block;
+      font-size: .78rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--naranja);
+      margin-bottom: 1rem;
+    }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; margin-bottom: 1rem; }
+    .hero .lema {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: #c9d3e0; max-width: 620px; margin-bottom: 2.25rem;
+    }
+    .botones { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .8rem 1.5rem; border-radius: 8px;
+      font-weight: 600; font-size: .95rem; text-decoration: none;
+      transition: background .2s, transform .2s, border-color .2s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primario { background: var(--naranja); color: #fff; }
+    .btn-primario:hover { background: #c96a24; }
+    .btn-secundario { border: 1px solid rgba(255,255,255,.35); color: #fff; }
+    .btn-secundario:hover { border-color: #fff; background: rgba(255,255,255,.06); }
+
+    .cifras {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+      margin-top: 3.5rem; padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,.12);
+      max-width: 480px;
+    }
+    .cifra strong {
+      display: block; font-family: 'Manrope', sans-serif;
+      font-size: 1.6rem; font-weight: 800; color: #fff;
+    }
+    .cifra span { font-size: .88rem; color: #aab6c6; line-height: 1.4; display: block; }
+
+    /* ===== SECCIONES ===== */
+    section { padding: 5rem 0; }
+    section.alterna { background: var(--blanco); }
+    .encabezado { margin-bottom: 2.5rem; max-width: 640px; }
+    .encabezado .pre {
+      font-size: .78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--naranja); margin-bottom: .5rem; display: block;
+    }
+    .encabezado h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 800; color: var(--texto); }
+    .encabezado p { margin-top: .75rem; color: var(--texto-suave); }
+
+    /* ===== SOBRE MÍ ===== */
+    .sobre-mi {
+      display: grid; grid-template-columns: 1.6fr 1fr; gap: 3rem; align-items: start;
+    }
+    .sobre-mi p { color: var(--texto-suave); margin-bottom: 1.1rem; }
+    .sobre-mi p strong { color: var(--texto); font-weight: 600; }
+    .ficha {
+      background: var(--fondo); border: 1px solid var(--borde);
+      border-radius: var(--radio); padding: 1.75rem;
+    }
+    .ficha h3 { font-size: 1rem; margin-bottom: 1.25rem; }
+    .ficha dl { display: grid; gap: 1rem; }
+    .ficha dt {
+      font-size: .75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--texto-suave);
+    }
+    .ficha dd { font-weight: 500; line-height: 1.45; }
+
+    /* ===== SERVICIOS ===== */
+    .servicios { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .servicio {
+      background: var(--blanco); border: 1px solid var(--borde);
+      border-radius: var(--radio); padding: 2rem 1.75rem;
+      transition: box-shadow .25s, transform .25s, border-color .25s;
+    }
+    .servicio:hover { box-shadow: var(--sombra); transform: translateY(-3px); border-color: transparent; }
+    .icono {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: var(--acento-suave); color: var(--acento);
+      display: grid; place-items: center; margin-bottom: 1.25rem;
+    }
+    .icono svg { width: 24px; height: 24px; }
+    .servicio h3 { font-size: 1.15rem; margin-bottom: .6rem; }
+    .servicio p { color: var(--texto-suave); font-size: .95rem; }
+
+    .compromiso {
+      margin-top: 2.5rem; padding: 1.75rem 2rem;
+      background: var(--acento); color: #fff; border-radius: var(--radio);
+      font-family: 'Manrope', sans-serif; font-size: 1.15rem; font-weight: 700; line-height: 1.5;
+      border-left: 6px solid var(--naranja);
+    }
+
+    /* ===== GALERÍA ===== */
+    .galeria { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .galeria figure {
+      position: relative; border-radius: var(--radio); overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, #2a3a52, #1f4e8c); /* se ve si la imagen no carga */
+    }
+    .galeria img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .galeria figure:hover img { transform: scale(1.06); }
+    .galeria figcaption {
+      position: absolute; inset: auto 0 0 0;
+      padding: 2.5rem 1.25rem 1rem;
+      background: linear-gradient(to top, rgba(18,26,38,.92), rgba(18,26,38,0));
+      color: #fff; font-weight: 600; font-size: .95rem;
+    }
+
+    /* ===== HABILIDADES ===== */
+    .habilidades { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .grupo {
+      background: var(--fondo); border: 1px solid var(--borde);
+      border-radius: var(--radio); padding: 1.75rem;
+    }
+    .grupo h3 { font-size: 1rem; margin-bottom: 1.1rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .chip {
+      background: var(--blanco); border: 1px solid var(--borde);
+      padding: .45rem 1rem; border-radius: 999px;
+      font-size: .88rem; font-weight: 500;
+    }
+    .grupo.software .chip { background: var(--acento-suave); border-color: transparent; color: var(--acento-oscuro); }
+
+    /* ===== DOCUMENTOS ===== */
+    .documentos { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; list-style: none; }
+    .documento {
+      display: flex; align-items: center; gap: 1.25rem;
+      background: var(--blanco); border: 1px solid var(--borde);
+      border-radius: var(--radio); padding: 1.5rem;
+      text-decoration: none;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .documento:hover { box-shadow: var(--sombra); transform: translateY(-3px); }
+    .documento .icono { margin: 0; flex-shrink: 0; }
+    .documento .info { flex: 1; }
+    .documento h3 { font-size: 1.05rem; margin-bottom: .2rem; }
+    .documento p { font-size: .9rem; color: var(--texto-suave); line-height: 1.5; }
+    .documento .flecha { color: var(--acento); font-weight: 600; font-size: .9rem; white-space: nowrap; }
+
+    /* ===== CONTACTO / FOOTER ===== */
+    .contacto { background: var(--oscuro); color: #fff; text-align: center; padding: 5rem 0 2rem; }
+    .contacto h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 800; margin-bottom: .75rem; }
+    .contacto p.intro { color: #aab6c6; max-width: 520px; margin: 0 auto 2rem; }
+    .contacto .correo { font-weight: 600; color: #fff; word-break: break-all; }
+    .contacto .pie {
+      margin-top: 4rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      font-size: .85rem; color: #7d8a9c;
+    }
+
+    /* ===== ACCESIBILIDAD ===== */
+    a:focus-visible { outline: 3px solid var(--naranja); outline-offset: 3px; border-radius: 4px; }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto !important; }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .servicios, .galeria { grid-template-columns: 1fr 1fr; }
+      .sobre-mi { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 640px) {
+      .nav ul { display: none; }
+      .hero { padding: 4rem 0 3.5rem; }
+      .cifras { grid-template-columns: 1fr; gap: 1rem; }
+      section { padding: 3.5rem 0; }
+      .servicios, .galeria, .habilidades, .documentos { grid-template-columns: 1fr; }
+      .botones .btn { flex: 1; justify-content: center; }
+      .compromiso { font-size: 1.05rem; padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVEGACIÓN ===== -->
+  <nav class="nav" aria-label="Principal">
+    <div class="container">
+      <a href="#inicio" class="marca" aria-label="Nicolás Pinilla, inicio">
+        <!-- Logo: iniciales con marcas de esquina y línea de cota, como en un plano -->
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M4 11V4h7M29 4h7v7M36 29v7h-7M11 36H4v-7" fill="none" stroke="#9aa5b4" stroke-width="2.2" stroke-linecap="round"/>
+          <text x="20" y="25.5" text-anchor="middle" fill="#fff" font-family="Manrope, sans-serif" font-weight="800" font-size="14" letter-spacing="1">NP</text>
+          <path d="M11 30h18M11 28.5v3M29 28.5v3" stroke="#fff" stroke-width="1" stroke-opacity=".5"/>
+        </svg>
+        <span class="nombre">Nicolás Pinilla<small>Ingeniero Civil</small></span>
+      </a>
+      <ul>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#documentos">Documentos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero" id="inicio">
+    <div class="container">
+      <span class="etiqueta-sup">Ingeniero Civil</span>
+      <h1>Nicolás Pinilla Cortés</h1>
+      <p class="lema">
+        Supervisión técnica, interventoría, evaluación de vulnerabilidad y conceptos estructurales.
+        Convierto la información de campo en decisiones técnicas confiables.
+      </p>
+      <div class="botones">
+        <a class="btn btn-primario" href="#contacto">Contáctame</a>
+      </div>
+
+      <div class="cifras">
+        <div class="cifra"><strong>+4 años</strong><span>de experiencia profesional</span></div>
+        <div class="cifra"><strong>Especialización</strong><span>en Gerencia de Obras</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== SOBRE MÍ ===== -->
+    <section id="sobre-mi" class="alterna">
+      <div class="container">
+        <div class="encabezado">
+          <span class="pre">Sobre mí</span>
+          <h2>Rigor en campo, claridad en la gestión</h2>
+        </div>
+        <div class="sobre-mi">
+          <div>
+            <p>
+              Soy <strong>Ingeniero Civil de la Universidad Católica de Colombia</strong>, con más de cuatro años
+              de experiencia en supervisión técnica, interventoría y evaluación de vulnerabilidad estructural.
+            </p>
+            <p>
+              He participado en proyectos de reforzamiento, diagnóstico de patologías e inspección de
+              edificaciones existentes, donde combino el trabajo en obra con la gestión técnica y administrativa
+              que exige cada proyecto.
+            </p>
+            <p>
+              Soy <strong>Coordinador de Trabajo en Alturas</strong> y actualmente curso una
+              <strong>especialización en Gerencia de Obras</strong>, para integrar la ejecución técnica con
+              la planeación y el control de proyectos. Me defino como una persona organizada, analítica y
+              detallista, enfocada en entregar información útil para tomar decisiones.
+            </p>
+          </div>
+
+          <aside class="ficha">
+            <h3>En resumen</h3>
+            <dl>
+              <div><dt>Formación</dt><dd>Ingeniería Civil · Universidad Católica de Colombia</dd></div>
+              <div><dt>Enfoque</dt><dd>Supervisión técnica e interventoría estructural</dd></div>
+              <div><dt>Certificación</dt><dd>Coordinador de Trabajo en Alturas</dd></div>
+              <div><dt>En curso</dt><dd>Especialización en Gerencia de Obras</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICIOS ===== -->
+    <section id="servicios">
+      <div class="container">
+        <div class="encabezado">
+          <span class="pre">Servicios</span>
+          <h2>Cómo puedo aportar a tu proyecto</h2>
+          <p>
+            Control, inspección y seguimiento de obras nuevas y estructuras existentes, con información
+            técnicamente respaldada en cada etapa.
+          </p>
+        </div>
+
+        <div class="servicios">
+          <article class="servicio">
+            <div class="icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M11 8v6M8 11h6"/></svg>
+            </div>
+            <h3>Inspección en campo</h3>
+            <p>Inspecciones técnicas, levantamientos y verificación de procesos constructivos. Identificación de patologías y evaluación de vulnerabilidad estructural.</p>
+          </article>
+
+          <article class="servicio">
+            <div class="icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/><path d="M5 12h14"/></svg>
+            </div>
+            <h3>Reforzamiento estructural</h3>
+            <p>Apoyo en el diagnóstico y seguimiento de reforzamientos: interpretación de planos y control de la correcta ejecución de las soluciones.</p>
+          </article>
+
+          <article class="servicio">
+            <div class="icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+            </div>
+            <h3>Conceptos estructurales</h3>
+            <p>Elaboración de conceptos técnicos sobre el estado y la seguridad de una estructura, con recomendaciones claras para intervenir, reforzar o continuar su uso.</p>
+          </article>
+
+          <article class="servicio">
+            <div class="icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 17v-3M12 17v-6M16 17v-4"/></svg>
+            </div>
+            <h3>Gestión e informes</h3>
+            <p>Reportes y análisis claros a partir de la información de campo, apoyados en AutoCAD, Revit y Microsoft Project.</p>
+          </article>
+        </div>
+
+        <p class="compromiso">
+          Mi compromiso: convertir los datos de campo en decisiones técnicas seguras, con orden, rigor y cumplimiento.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== GALERÍA ===== -->
+    <section id="proyectos" class="alterna">
+      <div class="container">
+        <div class="encabezado">
+          <span class="pre">Experiencia en campo</span>
+          <h2>Proyectos y trabajo en obra</h2>
+        </div>
+
+        <div class="galeria">
+          <figure>
+            <img src="imagenes/1.jpg" alt="Trabajos de reforzamiento estructural en obra" loading="lazy">
+            <figcaption>Reforzamiento estructural</figcaption>
+          </figure>
+          <figure>
+            <img src="imagenes/2.jpg" alt="Inspección técnica en trabajo en alturas" loading="lazy">
+            <figcaption>Inspección en alturas</figcaption>
+          </figure>
+          <figure>
+            <img src="imagenes/3.jpg" alt="Evaluación del estado de una fachada" loading="lazy">
+            <figcaption>Evaluación de fachadas</figcaption>
+          </figure>
+          <figure>
+            <img src="imagenes/4.jpg" alt="Supervisión de estructuras metálicas" loading="lazy">
+            <figcaption>Estructuras metálicas</figcaption>
+          </figure>
+          <figure>
+            <img src="imagenes/5.jpg" alt="Diagnóstico de patologías en elementos estructurales" loading="lazy">
+            <figcaption>Diagnóstico de patologías</figcaption>
+          </figure>
+          <figure>
+            <img src="imagenes/6.jpg" alt="Supervisión técnica durante la ejecución de obra" loading="lazy">
+            <figcaption>Supervisión en obra</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HABILIDADES ===== -->
+    <section id="habilidades">
+      <div class="container">
+        <div class="encabezado">
+          <span class="pre">Habilidades</span>
+          <h2>Competencias y herramientas</h2>
+        </div>
+
+        <div class="habilidades">
+          <div class="grupo">
+            <h3>Competencias técnicas</h3>
+            <div class="chips">
+              <span class="chip">Supervisión técnica</span>
+              <span class="chip">Interventoría estructural</span>
+              <span class="chip">Vulnerabilidad estructural</span>
+              <span class="chip">Diagnóstico de patologías</span>
+              <span class="chip">Conceptos estructurales</span>
+            </div>
+          </div>
+          <div class="grupo software">
+            <h3>Software</h3>
+            <div class="chips">
+              <span class="chip">AutoCAD</span>
+              <span class="chip">Revit</span>
+              <span class="chip">Civil 3D</span>
+              <span class="chip">Microsoft Project</span>
+              <span class="chip">Excel avanzado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DOCUMENTOS ===== -->
+    <section id="documentos" class="alterna">
+      <div class="container">
+        <div class="encabezado">
+          <span class="pre">Documentos</span>
+          <h2>Conoce mi trayectoria en detalle</h2>
+        </div>
+
+        <ul class="documentos">
+          <li>
+            <a class="documento" href="documentos/hoja-de-vida.pdf" target="_blank" rel="noopener">
+              <div class="icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+              </div>
+              <div class="info">
+                <h3>Hoja de vida</h3>
+                <p>Formación, experiencia y certificaciones</p>
+              </div>
+              <span class="flecha">Ver PDF →</span>
+            </a>
+          </li>
+          <li>
+            <a class="documento" href="documentos/brochure.pdf" target="_blank" rel="noopener">
+              <div class="icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+              </div>
+              <div class="info">
+                <h3>Brochure profesional</h3>
+                <p>Portafolio visual de proyectos y experiencia</p>
+              </div>
+              <span class="flecha">Ver PDF →</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== CONTACTO ===== -->
+  <footer class="contacto" id="contacto">
+    <div class="container">
+      <h2>¿Trabajamos juntos?</h2>
+      <p class="intro">Si tu proyecto necesita supervisión técnica, interventoría o una evaluación estructural, escríbeme.</p>
+      <p><a class="correo" href="mailto:ingnicolaspinilla2012@gmail.com">ingnicolaspinilla2012@gmail.com</a></p>
+      <p class="pie">© 2026 Nicolás Pinilla Cortés · Ingeniero Civil</p>
+    </div>
+  </footer>
+
+</body>
+</html>
